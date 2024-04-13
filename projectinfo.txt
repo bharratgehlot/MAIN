@@ -1,0 +1,4 @@
+======Project - Ocean of Peoples===
+
+1. MAKE CRUD APPLICATION USING FLASK
+2. User Friendly Design
