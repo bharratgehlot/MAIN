@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add New Record</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #4a148c; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #1a237e, #4a148c); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #1a237e, #4a148c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    }
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+    input[type="text"], input[type="tel"], input[type="email"], select, input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    input[type="submit"] {
+        width: 100%;
+        background-color: #673ab7;
+        color: white;
+        padding: 12px 20px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    input[type="submit"]:hover {
+        background-color: #512da8;
+    }
+    .search-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .search-link a {
+        color: #333;
+        text-decoration: none;
+    }
+    @media (min-width: 768px) {
+        .container {
+            max-width: 600px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add New Record</h2>
+    <form action="#" method="post">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="tel" name="number" placeholder="Phone Number" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="work" placeholder="Work" required>
+        <select name="department" required>
+            <option value="" disabled selected>Select Department</option>
+            <option value="sales">Sales</option>
+            <option value="marketing">Marketing</option>
+            <option value="finance">Finance</option>
+            <option value="human_resources">Human Resources</option>
+        </select>
+        <select name="gender" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="transgender">Transgender</option>
+            <option value="none">Prefer Not to Say</option>
+        </select>
+        <input type="file" name="photo" accept="image/*" required>
+        <input type="submit" value="Submit">
+    </form>
+    <div class="search-link">
+        <a href="search.html">Search Database</a>
+    </div>
+</div>
+
+</body>
+</html>
