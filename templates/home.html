@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Add New Record</title>
+<title>Add New Record - Databank</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -21,7 +21,7 @@
         border-radius: 10px;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
     }
-    h2 {
+    h3 {
         text-align: center;
         color: #333;
     }
@@ -56,6 +56,19 @@
         color: #333;
         text-decoration: none;
     }
+    .branding {
+        text-align: center;
+        margin-bottom: 20px;
+        background: #673ab7;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .branding span {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
     @media (min-width: 768px) {
         .container {
             max-width: 600px;
@@ -66,13 +79,16 @@
 <body>
 
 <div class="container">
-    <h2>Add New Record</h2>
-    <form action="#" method="post">
+    <div class="branding">
+        <span>People's Databank</span>
+    </div>
+    <h3>Add New Record</h3>
+    <form action="/add" method="post">
         <input type="text" name="name" placeholder="Full Name" required>
-        <input type="tel" name="number" placeholder="Phone Number" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="text" name="work" placeholder="Work" required>
-        <select name="department" required>
+        <input type="text" name="number" placeholder="Phone Number" >
+        <input type="email" name="email" placeholder="Email" >
+        <input type="text" name="work" placeholder="Work" >
+        <select name="department" >
             <option value="" disabled selected>Select Department</option>
             <option value="sales">Sales</option>
             <option value="marketing">Marketing</option>
@@ -86,7 +102,7 @@
             <option value="transgender">Transgender</option>
             <option value="none">Prefer Not to Say</option>
         </select>
-        <input type="file" name="photo" accept="image/*" required>
+        <input type="file" name="photo" accept="image/*">
         <input type="submit" value="Submit">
     </form>
     <div class="search-link">
