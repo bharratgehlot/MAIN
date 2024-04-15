@@ -6,19 +6,36 @@ import sqlite3
 
 app = Flask(__name__)
 
+DATABASE_FILE = 'data.db'
 
-# Function to insert data into the database
-def insert_data(name, number, email, work, department, gender, photo):
-    conn = sqlite3.connect('data.db')
-    c = conn.cursor()
-    c.execute('''INSERT INTO users (name, number, email, work, department, gender, photo)
-                    VALUES (?, ?, ?, ?, ?, ? ,?)''', (name, number, email, work, department, gender, photo))
+# Function to connect to the database
+def connect_database():
+    conn = sqlite3.connect(DATABASE_FILE)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+# Function to initialize the database
+def initialize_database():
+    conn = connect_database()
+    cursor = conn.cursor()
+
+    # SQL to create the table if not exists
+    sql = """CREATE TABLE IF NOT EXISTS records (
+                name TEXT,
+                number TEXT,
+                email TEXT,
+                place TEXT,
+                department TEXT,
+                gender TEXT
+            )"""
+    cursor.execute(sql)
     conn.commit()
     conn.close()
 
 # Home route to display the form
 @app.route('/')
 def home():
+    initialize_database()
     return render_template('home.html')
 
 # Route to handle form submission
@@ -27,22 +44,22 @@ def add_data():
     name = request.form['name']
     number = request.form['number']
     email = request.form['email']
-    work = request.form['work']
+    place = request.form['place']
     department = request.form['department']
     gender = request.form['gender']
 
-    photo = request.files['photo']
+    conn = connect_database()
+    cursor = conn.cursor()
 
-    if photo:
-        photo.save('static/uploads/' + photo.filename)
-        photo_path = 'static/uploads/' + photo.filename
-    else:
-        photo_path = ''
+    # SQL to insert data into the table
+    sql = """INSERT INTO records (name, number, email, place, department, gender) 
+                VALUES (?, ?, ?, ?, ?, ?)"""
+    cursor.execute(sql, (name, number, email, place, department, gender))
+    conn.commit()
+    conn.close()
 
-
-
-    insert_data(name, number, email, work, department, gender,)
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True)
+
