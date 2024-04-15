@@ -26,6 +26,7 @@ def initialize_database():
                 email TEXT,
                 place TEXT,
                 department TEXT,
+                marital_status TEXT,
                 gender TEXT
             )"""
     cursor.execute(sql)
@@ -47,14 +48,15 @@ def add_data():
     place = request.form['place']
     department = request.form['department']
     gender = request.form['gender']
+    marital_status = request.form['marital_status']
 
     conn = connect_database()
     cursor = conn.cursor()
 
     # SQL to insert data into the table
-    sql = """INSERT INTO records (name, number, email, place, department, gender) 
-                VALUES (?, ?, ?, ?, ?, ?)"""
-    cursor.execute(sql, (name, number, email, place, department, gender))
+    sql = """INSERT INTO records (name, number, email, place, department, gender, marital_status) 
+                VALUES (?, ?, ?, ?, ?, ?, ?)"""
+    cursor.execute(sql, (name, number, email, place, department, gender, marital_status))
     conn.commit()
     conn.close()
 
