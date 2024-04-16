@@ -1,1 +1,141 @@
-<h1>Search Result</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Results - Databank</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #4a148c; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #1a237e, #4a148c); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #1a237e, #4a148c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    }
+    h3 {
+        text-align: center;
+        color: #333;
+    }
+
+    .branding {
+        text-align: center;
+        margin-bottom: 20px;
+        background: #673ab7;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .branding span {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .search-result {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        
+ 
+    }
+
+    .search-result img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-right: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-result-details {
+        display: flex;
+        align-items: center;
+    }
+
+    .search-result-info {
+        flex-grow: 1;
+    }
+
+    .search-result-info p {
+        margin: 5px 0;
+    }
+
+    .search-result-info strong {
+        font-weight: bold;
+    }
+
+    .search-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .search-link a {
+        color: #673ab7;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    .search-link a:hover {
+        color: #512da8;
+    }
+
+
+
+
+
+    @media (min-width: 768px) {
+        .container {
+            max-width: 600px;
+        }
+    }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="branding">
+        <span> People's Databank </span>
+    </div>
+    <h3>Search Results</h3>
+
+      {% for result in results %}
+      <div class="search-result">
+          <div class="search-result-details">
+              <img src="https://via.placeholder.com/50" alt="Placeholder Image">
+              <div class="search-result-info">
+                  <p><strong>Name:</strong> {{ result['name'] }}</p>
+                  <p><strong>Number:</strong> {{ result['number'] }}</p>
+                  <p><strong>Email:</strong> {{ result['email'] }}</p>
+                  <p><strong>Place:</strong> {{ result['place'] }}</p>
+                  <p><strong>Department:</strong> {{ result['department'] }}</p>
+                  <p><strong>Marital Status:</strong> {{ result['marital_status'] }}</p>
+                  <p><strong>Gender:</strong> {{ result['gender'] }}</p>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+
+
+    <div class="search-link">
+        <a href="/search">Back to Search</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -33,6 +33,32 @@ def initialize_database():
     conn.commit()
     conn.close()
 
+
+#Function to handle search query and retrieve data from the database
+def search_data(query):
+    conn = connect_database()
+    cursor = conn.cursor()
+
+    sql = """ SELECT * FROM records WHERE name LIKE ? OR number LIKE ? """
+    cursor.execute(sql, ('%' + query + '%', '%' + query + '%'))
+    search_result = cursor.fetchall()
+    conn.close()
+
+    return search_result
+
+
+#Function to display the search result 
+def show_result():
+    if request.method == 'POST':
+        query = request.form['query']
+        results = search_data(query)
+        return render_template('searchresult.html', results=results)
+    else:
+        return render_template('searchresult.html')
+
+
+
+
 # Home route to display the form
 @app.route('/')
 def home():
@@ -42,6 +68,19 @@ def home():
 @app.route('/search')
 def search():
     return render_template('search.html')
+
+@app.route('/results')
+def results():
+    query = request.args.get('query')
+    if query:
+        results = search_data(query)
+        return render_template('searchresult.html', results=results)
+    else:
+        # Handle case when no query is provided
+        return render_template('searchresult.html', results=[])
+
+
+
 
 # Route to handle form submission
 @app.route('/add', methods=['POST'])
