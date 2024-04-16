@@ -6,7 +6,7 @@ import sqlite3
 
 app = Flask(__name__)
 
-DATABASE_FILE = 'data.db'
+DATABASE_FILE = 'output.db'
 
 # Function to connect to the database
 def connect_database():
