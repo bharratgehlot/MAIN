@@ -1,4 +1,6 @@
-======Project - Ocean of Peoples===
+======Project - Peoples's Databank===
 
-1. MAKE CRUD APPLICATION USING FLASK
-2. User Friendly Design
+1. MAKE CRUD APPLICATION USING FLASK.
+2. User Friendly Design.
+3. Make serch and result page functionable.
+4. Create one more page for display all matched data.
