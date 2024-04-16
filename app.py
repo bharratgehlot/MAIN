@@ -39,6 +39,10 @@ def home():
     initialize_database()
     return render_template('home.html')
 
+@app.route('/search')
+def search():
+    return render_template('search.html')
+
 # Route to handle form submission
 @app.route('/add', methods=['POST'])
 def add_data():
